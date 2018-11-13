@@ -140,6 +140,11 @@ process_t adb_remove_path(const char *serial, const char *path) {
     return adb_execute(serial, adb_cmd, ARRAY_LEN(adb_cmd));
 }
 
+process_t adb_get_device_serial_list(const char **serial_list, int length) {
+    const char *const adb_cmd[] = {"devices"};
+    return adb_execute(serial, adb_cmd, ARRAY_LEN(adb_cmd));    
+}
+
 SDL_bool process_check_success(process_t proc, const char *name) {
     if (proc == PROCESS_NONE) {
         LOGE("Could not execute \"%s\"", name);
